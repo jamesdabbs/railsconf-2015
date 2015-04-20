@@ -8,7 +8,7 @@ require_relative "./jobs"
 
 class Q < Thor
   desc "resque", "Add a job to Resque"
-  method_options count: :integer, alias: "-c"
+  method_option :count, aliases: "-c", default: 1
   def resque job, *args
     enqueue "Resque", job do |klass|
       Resque.enqueue klass, *args
@@ -16,7 +16,7 @@ class Q < Thor
   end
 
   desc "sidekiq", "Add a job to Sidekiq"
-  method_options count: :integer, alias: "-c"
+  method_option :count, aliases: "-c", default: 1
   def sidekiq job, *args
     enqueue "Sidekiq", job do |klass|
       klass.perform_async *args

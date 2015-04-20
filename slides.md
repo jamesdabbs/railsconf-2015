@@ -17,7 +17,7 @@
 
 # Background Workers
 
-![inline fit](http://i.imgur.com/uHqlWkF.png)
+![inline fit](http://i.imgur.com/clKM5c2.png)
 
 
 ---
@@ -121,7 +121,7 @@ loop do
     sleep polling_frequency
   end
 end
-shutdown # Unregistering signal handlers, &c.
+shutdown # Unregister signal handlers, &c.
 ```
 
 ---
