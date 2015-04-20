@@ -17,6 +17,7 @@ namespace :resque do
 end
 
 namespace :sidekiq do
+  desc "Start sidekiq workers"
   task :work do
     require "sidekiq/cli"
 
