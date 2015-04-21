@@ -21,7 +21,7 @@ namespace :sidekiq do
   task :work do
     require "sidekiq/cli"
 
-    workers = ENV["WORKERS"] || "25"
+    workers = ENV["WORKERS"] || "1"
     puts "Starting sidekiq with #{workers} workers"
 
     # Cheating a little by hooking into the CLI

@@ -2,7 +2,7 @@
 # [fit] _**Resque vs Sidekiq**_
 # [fit] **@jamesdabbs | james@theironyard.com**
 
-![](http://upload.wikimedia.org/wikipedia/commons/a/a7/Atlanta_Skyline_from_Buckhead.jpg)
+![](http://i.imgur.com/LEzOTI7.jpg)
 
 ---
 
@@ -11,13 +11,13 @@
 # Read, read, read. Read everything – trash, classics, good and bad, and see how they do it.
 — William Faulkner, on writing
 
-![Faulkner, reading](http://sheimagazine.com/wp-content/uploads/2014/01/69eecb475a762e6c_large.jpeg)
+![Faulkner, reading](http://i.imgur.com/lNOy0bP.jpg)
 
 ---
 
 # Background Workers
 
-![inline fit](http://i.imgur.com/clKM5c2.png)
+![inline fit](http://i.imgur.com/Qf8q1eP.png)
 
 
 ---
@@ -228,7 +228,7 @@ end
 # [fit] Actors &
 # [fit] Celluloid
 
-![](http://learnyousomeerlang.com/static/img/erlang-the-movie.png)
+![](http://i.imgur.com/vH4mDRt.jpg)
 
 ---
 
@@ -237,8 +237,8 @@ class Wallet
   include Celluloid
   attr_reader :amount
 
-  def initialize; @amount  = 100; end
-  def adjust(Δ) ; @amount += Δ  ; end
+  def initialize(amt); @amount  = amt; end
+  def adjust(Δ)      ; @amount += Δ  ; end
 end
 
 @wallet = Wallet.new 100
@@ -278,14 +278,27 @@ end
 
 ---
 
-^ Subtler considerations: parallelism, MRI and the GIL ...
+^ Not to be glib. If you're both, you've got to spend some time/money -
+^ either fixing up threading issues or scaling up worker boxes
 
 # Takeaways
 
-* If you're memory-constrained, use Sidekiq
-* If you're worried about thread safety, use Resque
-* If you're both, ¯\\_(ツ)\_/¯
-* If you're neither, be glad you're not both
+If you're:
+
+* memory-constrained - use Sidekiq
+* not thread-safe - use Resque
+* both - ¯\\_(ツ)\_/¯
+
+---
+
+# Takeaways
+
+Considerations:
+
+* How important is job isolation?
+* What's your bottleneck?
+* What about the GIL?
+* How important is support?
 
 ---
 
@@ -293,8 +306,9 @@ end
 
 Don't be afraid to dive in to code
 
-* `pry` and friends - `pry-stack_explorer`, `pry-byebug`, `pry-rescue`, etc.
-* `bundle show`
+* `pry` - `ls`, `@`, `wtf?!?`, &c.
+* `pry-stack_explorer`, `pry-byebug`, `pry-rescue`, &c.
+* `bundle show`, `bundle open`
 * `ack --rb`
 
 ---
@@ -322,4 +336,4 @@ Crack open a good gem
 # [fit] _**Resque vs Sidekiq**_
 # [fit] **@jamesdabbs | james@theironyard.com**
 
-![](http://upload.wikimedia.org/wikipedia/commons/a/a7/Atlanta_Skyline_from_Buckhead.jpg)
+![](http://i.imgur.com/LEzOTI7.jpg)

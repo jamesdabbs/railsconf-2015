@@ -4,7 +4,9 @@ require 'sidekiq'
 require 'pry'
 require 'pry-stack_explorer'
 
-class Base
+# Jobs that can be run with either Resque or Sidekiq
+# Probably a bad idea
+class MultiJob
   include Sidekiq::Worker
 
   # Set default queue (for Resque) by default
@@ -20,24 +22,24 @@ end
 
 #-----
 
-class PryJob < Base
+class PryJob < MultiJob
   def perform *args
     binding.pry
   end
 end
 
-class SlowJob < Base
-  def perform
-    puts "Sleeping ..."
-    sleep
-  end
-end
-
-class TickJob < Base
+class TickJob < MultiJob
   def perform n=10
     n.to_i.downto 0 do |i|
       puts "#{Process.pid}: #{i}"
       sleep 1
     end
+  end
+end
+
+class SlowJob < MultiJob
+  def perform
+    puts "Sleeping ..."
+    sleep
   end
 end
